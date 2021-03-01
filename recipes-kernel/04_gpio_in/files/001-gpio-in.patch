@@ -1,0 +1,55 @@
+diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+index 22c562d4196a..0e2c145439fd 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+@@ -27,11 +27,21 @@ aliases {
+ 		blconfig = &blconfig;
+ 	};
+ 
++
++       my_device_gpio_in:my_device_gpio_in@0 {
++                          compatible = "raspberrypi,my_device_gpio_in";
++                          leds-gpios = <&gpio 42 GPIO_ACTIVE_HIGH>;
++                          input-gpios = <&gpio 24 GPIO_ACTIVE_HIGH>;
++        };
++
++
++
+ 	leds {
++/*
+ 		act {
+ 			gpios = <&gpio 42 GPIO_ACTIVE_HIGH>;
+ 		};
+-
++*/
+ 		pwr {
+ 			label = "PWR";
+ 			gpios = <&expgpio 2 GPIO_ACTIVE_LOW>;
+@@ -581,12 +591,13 @@ audio_pins: audio_pins {
+ };
+ 
+ &leds {
++/*
+ 	act_led: act {
+ 		label = "led0";
+ 		linux,default-trigger = "mmc0";
+ 		gpios = <&gpio 42 GPIO_ACTIVE_HIGH>;
+ 	};
+-
++*/
+ 	pwr_led: pwr {
+ 		label = "led1";
+ 		linux,default-trigger = "default-on";
+@@ -609,10 +620,11 @@ &cam1_reg {
+ 
+ / {
+ 	__overrides__ {
++/*
+ 		act_led_gpio = <&act_led>,"gpios:4";
+ 		act_led_activelow = <&act_led>,"gpios:8";
+ 		act_led_trigger = <&act_led>,"linux,default-trigger";
+-
++*/
+ 		pwr_led_gpio = <&pwr_led>,"gpios:4";
+ 		pwr_led_activelow = <&pwr_led>,"gpios:8";
+ 		pwr_led_trigger = <&pwr_led>,"linux,default-trigger";
