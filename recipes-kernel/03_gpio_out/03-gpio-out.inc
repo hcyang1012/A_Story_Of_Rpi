@@ -3,11 +3,11 @@ SECTION = "base"
 
 inherit module
 
-SRC_URI = "file://02_dt_overlay.c \
+SRC_URI = "file://03_gpio_out.c \
            file://Makefile \
 	   file://LICENSE \
 	   "
 S = "${WORKDIR}"
 
-KERNEL_MODULE_AUTOLOAD = "02_dt_overlay"
+KERNEL_MODULE_AUTOLOAD = "03_gpio_out"
 
